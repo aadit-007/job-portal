@@ -11,23 +11,23 @@ function App() {
   const [jobs, setJobs] = useState([]);
   const [customSearch, setCustomSearch] = useState(false);
 
-  const fetchJobs = async() => {
-    setCustomSearch(false);
-    const tempJobs = []
-    const jobsRef = query(collection(db, "jobs"));
-    const q = query(jobsRef, orderBy("postedOn", "desc"));
-    const req = await getDocs(q);
+  // const fetchJobs = async() => {
+  //   setCustomSearch(false);
+  //   const tempJobs = []
+  //   const jobsRef = query(collection(db, "jobs"));
+  //   const q = query(jobsRef, orderBy("postedOn", "desc"));
+  //   const req = await getDocs(q);
 
-    req.forEach((job) => {
-      // console.log(doc.id, " => ", doc.data());
-      tempJobs.push({
-        ...job.data(),
-        id: job.id,
-        postedOn: job.data().postedOn.toDate()
-      })
-    });
-    setJobs(tempJobs);
-  }
+  //   req.forEach((job) => {
+  //     // console.log(doc.id, " => ", doc.data());
+  //     tempJobs.push({
+  //       ...job.data(),
+  //       id: job.id,
+  //       postedOn: job.data().postedOn.toDate()
+  //     })
+  //   });
+  //   setJobs(tempJobs);
+  // }
 
   const fetchJobsCustom = async(jobCriteria) => {
     setCustomSearch(true);
